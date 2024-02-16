@@ -1,28 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Document1</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.7.2/dist/full.min.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+
 </head>
+
 <body>
-    <h1>Event Bubble</h1>
-    <section>
-        <ul id="list-ul">
-            <li id="item-1">Lorem.</li>
-            <li id="item-2">At!</li>
-            <li id="item-3">Beatae?</li>
-            <li id="item-4">Deleniti!</li>
-            <li id="item-5">Tempore?</li>
-        </ul>
+    <section class="flex flex-row  gap-2 justify-center item-center m-auto mt-5">
+
+        <div class="card w-64 bg-slate-200 bg-base-100 shadow-xl flex ">
+
+            <h2 class="card-title p-5 text-black ">Click To Remove</h2>
+
+            <div id="btn-container" class="btn-container grid grid-cols-2 gap-2 p-5">
+                <button class="btn btn-secondary">Secondary</button>
+                <button class="btn btn-secondary">Secondary</button>
+                <button class="btn btn-secondary">Secondary</button>
+                <button class="btn btn-secondary">Secondary</button>
+                <button class="btn btn-secondary">Secondary</button>
+                <button class="btn btn-secondary">Secondary</button>
+            </div>
+
+        </div>
+        <button id="add-btn" class="btn btn-active btn-primary w-36">Click to Add</button>
     </section>
     <script>
-        document.getElementById('item-2').addEventListener('click', function(){
-            console.log('item clicked');
-        })
-        document.getElementById('list-ul').addEventListener('click', function(){
-            console.log('ul clicked')
-        })
+        const btnContainer = document.getElementById('btn-container');
+
+        btnContainer.addEventListener('click', function (event) {
+            if (event.target.classList.contains('btn-secondary')) {
+                event.target.parentNode.removeChild(event.target);
+            }
+
+        });
+
+        document.getElementById('add-btn').addEventListener('click', function () {
+            const newButton = document.createElement('button');
+            newButton.className = 'btn btn-secondary';
+            newButton.innerText = 'Secondary';
+
+            btnContainer.appendChild(newButton);
+        });
     </script>
+
 </body>
+
 </html>
